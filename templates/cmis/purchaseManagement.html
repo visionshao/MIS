@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>采购管理</title>
+    <!-- Bootstrap Styles-->
+    <link href="../static/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../static/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="../static/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="../static/assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+    <div id="wrapper">
+        <!--上面-->
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index"><strong>北大食堂管理系统</strong></a>
+            </div>
+            <ul class="nav navbar-top-links navbar-left">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                       采购清单<i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="/purchaseManagement">
+                                    <div>
+                                        查看已完成订单
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                        </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+				<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        已完成订单<i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="/ordersManagement">
+                                    <div>
+                                        查看已完成订单
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                        </ul>
+                </li>
+                <!-- /.dropdown -->
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        未完成订单<i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
+                <!-- /.dropdown -->
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <!--/. NAV TOP 左侧 -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a href="/index"><i class="fa fa-dashboard"></i> 主页</a>
+                    </li>
+                    <li>
+                        <a href="/menuManagement"><i class="fa fa-desktop"></i> 菜谱管理</a>
+                    </li>
+					<li>
+                        <a href="/saleManagement"><i class="fa fa-bar-chart-o"></i> 销售管理</a>
+                    </li>
+                    <li>
+                        <a href="/repertoryManagement"><i class="fa fa-qrcode"></i> 库存管理</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/appointManagement"><i class="fa fa-table"></i> 预约管理</a>
+                    </li>
+                    <li>
+                        <a class="active-menu" href="/purchaseManagement"><i class="fa fa-edit"></i> 采购管理</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. 右侧 -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="predict-button">
+                    采购计划推荐
+                </button>
+                <div class="row" style="margin-top: 30px">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                 采购计划推荐表单
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="predictResult">
+                                        <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>食材名称</th>
+                                                <th>质量/kg</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- <tr class="odd gradeA">
+                                                <td>1</td>
+                                                <td>猪肉</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr class="even gradeA">
+                                                <td>2</td>
+                                                <td>青菜</td>
+                                                <td>200</td>
+                                            </tr> -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+    
+				
+                <!-- /. ROW  -->
+				
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="../static/assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="../static/assets/js/bootstrap.min.js"></script>
+	 
+    <!-- Metis Menu Js -->
+    <script src="../static/assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="../static/assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="../static/assets/js/morris/morris.js"></script>
+	
+	
+	<script src="../static/assets/js/easypiechart.js"></script>
+	<script src="../static/assets/js/easypiechart-data.js"></script>
+	<!-- DATA TABLE SCRIPTS -->
+    <script src="../static/assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="../static/assets/js/dataTables/dataTables.bootstrap.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#predictResult').dataTable();
+            });
+    </script>
+	
+    <!-- Custom Js -->
+    <script src="../static/assets/js/custom-scripts.js"></script>
+    <script>
+        $('#predict-button').click(function(){
+            $.ajax({
+                url:"/getPredictResult",
+                type:'get',
+                //data:data,
+                success:function(predictResult){
+                    console.log(predictResult);
+                    //predictResult = JSON.stringify(predictResult);
+                    var tb = document.getElementById('predictResult');
+                    var rowNum=tb.rows.length;
+                    for (i=1;i<rowNum;i++)
+                    {
+                        tb.deleteRow(i);
+                        rowNum=rowNum-1;
+                        i=i-1;
+                    }
+                    //console.log(predictResult);
+                    var txtCount = Object.keys(predictResult).length;
+                    console.log(predictResult[1])
+                    for(var key in predictResult){
+                        var currentRows = document.getElementById("predictResult").rows.length;
+                        //console.log(currentRows);
+                        var insertTr = document.getElementById("predictResult").insertRow(currentRows);
+                        var insertTd = insertTr.insertCell(0);
+                        insertTd.style.textAlign="center";
+                        insertTd.innerHTML = currentRows;
+                        //console.log(predictResult[0][i]);
+
+                        insertTd = insertTr.insertCell(1);
+                        // insertTr.onmouseover="this.style.backgroundColor='#ffff66';";
+                        // insertTr.onmouseout="this.style.backgroundColor='#ffffff';";
+                        //insertTd.style.textAlign="center";
+                        insertTd.innerHTML = key;
+
+                        insertTd = insertTr.insertCell(2);
+                        insertTd.innerHTML = predictResult[key]/1000;
+                    }
+                    $(document).ready(function () {
+                        $('#predictResult').dataTable();
+                    });
+                }
+            })
+        });
+    </script>
+
+
+</body>
+
+</html>
